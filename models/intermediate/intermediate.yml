@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_employees
+    description: "Table that holds all the information about the employees."
+    columns:
+      - name: employee_id
+        tests:
+          - unique:
+                    config:
+                      store_failures: true
+          - not_null:
+                    config:
+                      store_failures: true
+
+      - name: starting_date
+        description: ""
+        meta:
+          masking_policy: masking_employee
+
+      - name: ending_date
+        description: ""
+        meta:
+          masking_policy: masking_employee
+
+      - name: team
+        description: ""
+        tests:
+        - dbt_expectations.expect_column_values_to_be_between:
+            min_value: 1 
+            max_value: 10
+            strictly: false
+            config:
+              store_failures: true
+
+      - name: first_name
+        description: ""
+
+      - name: last_name
+        description: ""
