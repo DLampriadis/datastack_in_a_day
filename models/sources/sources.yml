@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: fivetran_raw_data
+    database: raw
+    tables:
+      - name: employees
+      - name: employee_info
+
+  - name: fivetran_fivetran_schema1
+    database: raw
+    tables:
+      - name: customer
+
+  - name: fivetran_fivetran_schema2
+    database: raw
+    tables:
+      - name: nation
+      - name: region
