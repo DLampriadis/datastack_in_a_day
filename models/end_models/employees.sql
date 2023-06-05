@@ -8,4 +8,4 @@
 
 select 
     *
-from {{ ref('int_employees') }}
+from {{ ref('int_employees') }} 
