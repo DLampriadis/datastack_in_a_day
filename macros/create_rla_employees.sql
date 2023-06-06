@@ -1,7 +1,7 @@
 {% macro create_rla_employees(database, schema) %}
-    {% if target.database == 'prd' %}
+    {% if target.name == 'prd' %}
         {% set seed_schema = 'seeds' %}
-    {% elif target.database == 'dev' %}
+    {% elif target.name == 'dev' %}
         {% set seed_schema = 'dbt_dev_seeds' %}
     {% else %}
         {% set seed_schema = 'dbt_dev_seeds' %}        
