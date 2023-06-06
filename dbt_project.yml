@@ -42,7 +42,6 @@ models:
     end_models:
       +schema: end_models
       +materialized: table
-      
 
 seeds:
   +schema: seeds
