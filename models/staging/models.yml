@@ -1,0 +1,177 @@
+version: 2
+
+models:
+  - name: stg_employees
+    description: "Table that holds partial information about the employees. Dates, teams are important"
+    columns:
+      - name: employee_id
+        tests:
+          - unique:
+                    config:
+                      store_failures: true
+          - not_null:
+                    config:
+                      store_failures: true
+
+      - name: starting_date
+        description: ""
+
+      - name: ending_date
+        description: ""
+
+      - name: team
+        description: ""
+        tests:
+        - dbt_expectations.expect_column_values_to_be_between:
+            min_value: 1 
+            max_value: 10
+            strictly: false
+            config:
+              store_failures: true
+
+  - name: stg_employee_info
+    description: "Table that holds names of the employees."
+    columns:
+      - name: employee_id
+        tests:
+          - unique:
+                    config:
+                      store_failures: true
+          - not_null:
+                    config:
+                      store_failures: true
+
+      - name: first_name
+        description: ""
+
+      - name: last_name
+        description: ""
+
+  - name: employees
+    description: "Table that holds all the information about the employees."
+    columns:
+    - name: employee_id
+      tests:
+        - unique:
+                  config:
+                    store_failures: true
+        - not_null:
+                  config:
+                    store_failures: true
+
+    - name: starting_date
+      description: ""
+
+    - name: ending_date
+      description: ""
+
+    - name: team
+      description: ""
+
+    - name: first_name
+      description: ""
+
+    - name: last_name
+      description: ""
+  
+  - name: int_employees
+    description: "Table that holds all the information about the employees."
+    columns:
+      - name: employee_id
+        tests:
+          - unique:
+                    config:
+                      store_failures: true
+          - not_null:
+                    config:
+                      store_failures: true
+
+      - name: starting_date
+        description: ""
+
+      - name: ending_date
+        description: ""
+
+      - name: team
+        description: ""
+        tests:
+        - dbt_expectations.expect_column_values_to_be_between:
+            min_value: 1 
+            max_value: 10
+            strictly: false
+            config:
+              store_failures: true
+
+      - name: first_name
+        description: ""
+
+      - name: last_name
+        description: ""
+
+  - name: stg_customers
+    description: "Table that holds all the information about the customers."
+    columns:
+      - name: cust_key
+        tests:
+          - unique:
+                    config:
+                      store_failures: true
+          - not_null:
+                    config:
+                      store_failures: true
+
+      - name: cust_name
+        description: ""
+
+      - name: cust_acc_bal
+        description: ""
+
+      - name: cust_address
+        description: ""
+
+      - name: cust_phone
+        description: ""
+
+      - name: comment
+        description: ""
+
+      - name: market_segment
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: region_name
+        description: ""
+
+  - name: customers
+    description: "Table that holds all the information about the customers."
+    columns:
+      - name: cust_key
+        description: ""
+
+      - name: cust_name
+        description: ""
+        meta:
+          masking_policy: masking_customers
+
+      - name: cust_acc_bal
+        description: ""
+
+      - name: cust_address
+        description: ""
+
+      - name: cust_phone
+        description: ""
+
+      - name: comment
+        description: ""
+
+      - name: market_segment
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: region_name
+        description: ""

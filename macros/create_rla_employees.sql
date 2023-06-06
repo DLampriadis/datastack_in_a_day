@@ -1,5 +1,5 @@
 {% macro create_rla_employees(database, schema) %}
-    {% set seed_schema='seeds' %}
+    {% set seed_schema='dbt_dev_seeds' %}
 
     CREATE OR REPLACE ROW ACCESS POLICY {{ database }}.{{ schema }}.rla_employees
     AS (team int) RETURNS BOOLEAN ->
