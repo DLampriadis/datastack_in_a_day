@@ -1,10 +1,10 @@
 {% macro create_rla_employees(database, schema) %}
-    {% if target.name == 'prd' %}
+    {% if target.database == 'prd' %}
         {% set seed_schema = 'seeds' %}
-    {% endif %}
-
-    {% if target.name == 'dev' %}
+    {% elif target.database == 'dev' %}
         {% set seed_schema = 'dbt_dev_seeds' %}
+    {% else %}
+        {% set seed_schema = 'dbt_dev_seeds' %}        
     {% endif %}
 
     CREATE OR REPLACE ROW ACCESS POLICY {{ database }}.{{ schema }}.rla_employees
