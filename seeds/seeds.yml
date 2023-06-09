@@ -1,0 +1,18 @@
+version: 2
+
+seeds:
+    - name: map_tbl_managers
+      description: "a mapping table for the maagers and their team number"
+      columns:
+        - name: username
+          description: " manager's username on snowflake"
+
+        - name: manager_team
+          description: "the number of the team they are part of"
+          tests:
+            - dbt_expectations.expect_column_values_to_be_between:
+                min_value: 1 
+                max_value: 10
+                strictly: false
+                config:
+                  store_failures: true
