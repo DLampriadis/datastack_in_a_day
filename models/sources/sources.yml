@@ -5,6 +5,13 @@ sources:
     database: raw
     tables:
       - name: employees
+        description: "One record per employee"
+        columns:
+          - name: employee_id
+            description: "the id of each employee"
+          - name: date1
+          - name: date2
+          - name: team
       - name: employee_info
 
   - name: fivetran_fivetran_schema1
